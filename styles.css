@@ -1,0 +1,675 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+:root {
+    --primaria: #4f46e5;
+    --secundaria: #7c3aed;
+    --escuro: #0f172a;
+    --masiescuro: #0a0f1c;
+    --claro: #e2e8f0;
+    --vidro: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--escuro);
+    color: var(--claro);
+}
+
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+.navegacao {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: rgba(15, 23, 42, 0.8);
+
+    width: 100%;
+
+    z-index: 100;
+
+    padding: 1.5rem;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+
+    list-style: none;
+
+    gap: 3rem;
+}
+
+.menu-link {
+    text-decoration: none;
+
+    color: var(--claro);
+
+    font-weight: 500;
+
+    position: relative;
+
+    padding: 0.5rem 0;
+}
+
+.menu-link::before {
+    content: '';
+
+    height: 2px;
+    width: 0;
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    background: linear-gradient(
+        90deg,
+        var(--primaria),
+        var(--secundaria)
+    );
+
+    transition: width 0.5s ease;
+}
+
+.menu-link:hover::before {
+    width: 100%;
+}
+
+
+/* =========================
+   SEÇÕES
+========================= */
+
+.cabecalho,
+.sobre,
+.projetos,
+.contatos {
+    min-height: 100vh;
+
+    padding: 120px 2rem 60px;
+
+    scroll-snap-align: start;
+}
+
+
+/* =========================
+   INÍCIO
+========================= */
+
+.cabecalho {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.Foto-perfil {
+    width: 350px;
+    height: 350px;
+
+    box-shadow:
+        0 0 29px rgba(79, 70, 229, 0.3);
+
+    border-radius: 50%;
+
+    border: 4px solid var(--vidro);
+
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 3.5rem;
+
+    color: var(--primaria);
+
+    font-weight: bold;
+
+    margin: 20px;
+}
+
+.cabecalho-sub-titulo {
+    font-size: 1.5rem;
+
+    color: var(--claro);
+}
+
+
+/* =========================
+   SOBRE
+========================= */
+
+.sobre {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    padding: 120px 2rem 60px;
+
+    position: relative;
+}
+
+.sobre-titulo {
+    font-size: 3.5rem;
+
+    color: var(--claro);
+
+    text-align: center;
+
+    margin-bottom: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    position: relative;
+}
+
+
+/* Linha abaixo do título */
+
+.sobre-titulo::after {
+    content: '';
+
+    display: block;
+
+    width: 60px;
+    height: 3px;
+
+    margin: 15px auto 35px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--primaria),
+        var(--secundaria)
+    );
+
+    box-shadow:
+        0 0 12px rgba(79, 70, 229, 0.5);
+}
+
+
+/* Caixa principal */
+
+.sobre-caixa {
+    padding: 3rem;
+
+    max-width: 850px;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.07),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Brilho dentro da caixa */
+
+.sobre-caixa::before {
+    content: '';
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -80px;
+
+    background: var(--primaria);
+
+    opacity: 0.12;
+
+    filter: blur(60px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* Linha luminosa */
+
+.sobre-caixa::after {
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+
+    width: 70%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(124, 58, 237, 0.8),
+        transparent
+    );
+}
+
+
+/* Efeito hover */
+
+.sobre-caixa:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(124, 58, 237, 0.45);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.3),
+        0 0 35px rgba(79, 70, 229, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+
+/* Texto */
+
+.sobre-paragrafo {
+    text-align: center;
+
+    font-size: 1.15rem;
+
+    line-height: 1.9;
+
+    color: rgba(226, 232, 240, 0.9);
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* Palavras destacadas */
+
+.sobre-paragrafo strong {
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   PROJETOS
+========================= */
+
+.projetos {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.projetos-titulos {
+    text-align: center;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 3rem;
+
+    color: #ffffff;
+}
+
+.projeto-caixa {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1.5rem;
+
+    max-width: 1200px;
+
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+
+/* Cards */
+
+.projetos-card {
+    background: rgba(255, 255, 255, 0.05);
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border: 1px solid var(
+        --vidro,
+        rgba(255, 255, 255, 0.1)
+    );
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.projetos-card:hover {
+    box-shadow:
+        0 10px 20px rgba(79, 70, 229, 0.2);
+
+    transform: translateY(-8px);
+}
+
+
+/* Imagens */
+
+.projetos-imagem {
+    height: 200px;
+
+    width: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* Textos dos projetos */
+
+.caixa-textos-projetos {
+    padding: 1.2rem 1.5rem 1.8rem 1.5rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.2rem;
+
+    text-align: left;
+}
+
+.caixa-textos-projetos h3 {
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    margin: 0;
+
+    line-height: 1.2;
+}
+
+.caixa-textos-projetos p {
+    color: rgba(226, 232, 240, 0.8);
+
+    font-size: 1rem;
+
+    line-height: 1.35;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+/* =========================
+   CONTATOS
+========================= */
+
+.contatos {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.contatos-titulo {
+    text-align: center;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 50px;
+}
+
+.formulario-contato {
+    max-width: 600px;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    background: rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    padding: 2rem;
+
+    border: 1px solid var(--vidro);
+
+    border-radius: 16px;
+}
+
+.campo-form {
+    width: 100%;
+
+    padding: 1rem;
+
+    background: rgba(255,255,255,0.05);
+
+    border-radius: 8px;
+
+    color: var(--claro);
+
+    border: 1px solid var(--vidro);
+
+    outline: none;
+}
+
+.campo-form:focus {
+    border-color: var(--secundaria);
+
+    box-shadow:
+        0 0 10px rgba(79,70,229,0.3);
+}
+
+.grupo-form {
+    margin-bottom: 1.5rem;
+}
+
+.botao {
+    color: var(--claro);
+
+    background: linear-gradient(
+        45deg,
+        var(--primaria),
+        var(--secundaria)
+    );
+
+    padding: 1rem 2rem;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    width: 100%;
+
+    transition: all 0.5s ease;
+}
+
+.botao:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 5px 15px rgba(79,70,229,0.4);
+}
+
+
+/* =========================
+   PARTÍCULAS / FUNDO
+========================= */
+
+.particulas {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+
+    opacity: 0.5;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            var(--primaria) 0%,
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            var(--secundaria) 0%,
+            transparent 20%
+        ),
+
+        var(--masiescuro);
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 768px) {
+
+    .navegacao {
+        padding: 1rem;
+    }
+
+    .menu {
+        gap: 1.5rem;
+    }
+
+    .menu-link {
+        font-size: 0.9rem;
+    }
+
+
+    .cabecalho,
+    .sobre,
+    .projetos,
+    .contatos {
+        padding: 100px 1.5rem 40px;
+    }
+
+
+    .Foto-perfil {
+        width: 250px;
+        height: 250px;
+    }
+
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+
+    .cabecalho-sub-titulo {
+        font-size: 1.2rem;
+    }
+
+
+    .sobre-titulo {
+        font-size: 2.3rem;
+    }
+
+
+    .sobre-caixa {
+        padding: 2rem 1.5rem;
+    }
+
+
+    .sobre-paragrafo {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+
+    .projetos-titulos,
+    .contatos-titulo {
+        font-size: 2rem;
+    }
+
+
+    .projeto-caixa {
+        grid-template-columns: 1fr;
+    }
+
+
+    .projetos-card {
+        width: 100%;
+    }
+}
